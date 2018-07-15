@@ -1,0 +1,2 @@
+1.npm install @angular/animations --save
+2.npm install @angular/animations --save
