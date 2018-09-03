@@ -1,0 +1,46 @@
+<div class="float-panel bg-light navbar-light" data-top="0" data-scroll="100">
+  <div class="container">
+    <nav class="navbar navbar-expand-md">
+      <!-- Brand -->
+      <a class="navbar-brand" routerLink="/">
+        <img src="assets/images/logo.png" height="40" width="40" alt="Klickify Inc." />
+      </a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="shopping-cart">Shopping Cart</a>
+          </li>
+          <ng-template #anonymousUser>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="login">Login</a>
+            </li>
+          </ng-template>
+        
+        
+          <li ngbDropdown *ngIf="auth.user$ | async as user; else anonymousUser" class="nav-item dropdown show">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" data-toggle="dropdown01">{{user.displayName}}</a>
+            <div ngbDropdownMenu class="dropdown-menu show" aria-labelledby="dropdown01">
+              <a class="dropdown-item" routerLink="my/orders">My Orders</a>
+              <a class="dropdown-item" routerLink="admin/orders">Manage Orders</a>
+              <a class="dropdown-item" routerLink="admin/products">Manage Products</a>
+              <a class="dropdown-item"  (click)="logout()">Log Out</a>
+            </div>
+
+          </li>
+        </ul>
+
+      </div>
+
+    </nav>
+  </div>
+</div>
